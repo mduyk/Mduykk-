@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<title>Lịch sử</title>
+
+<style>
+body{background:#020617;color:white;font-family:Arial;text-align:center;}
+.box{background:#1e293b;margin:10px;padding:10px;border-radius:10px;}
+</style>
+</head>
+
+<body>
+
+<h2>📜 Lịch sử mua</h2>
+
+<div id="list"></div>
+
+<script>
+let user = localStorage.getItem("user_now");
+let h = JSON.parse(localStorage.getItem("history_"+user) || "[]");
+
+let html = "";
+
+if(h.length === 0){
+html = "<p>Chưa có giao dịch</p>";
+}else{
+h.slice().reverse().forEach(i=>{
+html += `<div class="box">
+<b>${i.name}</b><br>
+💰 ${i.price}đ<br>
+🕒 ${i.time}
+</div>`;
+});
+}
+
+list.innerHTML = html;
+</script>
+
+</body>
+</html>
